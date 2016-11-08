@@ -21,7 +21,11 @@ def process_image_file_jpg(imgFile):
 
 def process_image_file_png(imgFile):
     im = Image.open(imgFile)
-    bg = Image.new("RGB", im.size, (255,255,255))
-    bg.paste(im,im)
+    #im.load()
+    print("*****")
+    #bg = Image.new("RGB", im.size, (255,255,255))
+    #bg.paste(im, im)
+    #bg.paste(im, mask=im.split()[3])
+    print("***")
     #print image_to_string(bg)
-    return pytesseract.image_to_string(bg)
+    return pytesseract.image_to_string(im)

@@ -10,11 +10,11 @@ $(function() {
     console.log(document.getElementById('file-picker'));
   // event handler for form submission
   $('#post-form').on('submit', function(event){
+
+	  $("#search").text("Uploading");
+          $("#search").attr('disabled', true);
+
     $("#results").hide()
-    //value = $('input[name="image_url"]').val();
-      console.log($('#post-form')[0])
-      //var input = document.getElementById('file-picker').files[0];
-    //console.log(input)
     formdata = new FormData($('#post-form')[0]); 
     $.ajax({
       type: "POST",
@@ -28,8 +28,9 @@ $(function() {
         $("#retry").show()
         $("#results").show()
         $("#results").html("<h3>Image</h3><img class='img-responsive' src='/ocr/" + result["filename"]+ "'" + 
-          " style='max-width: 400px;'><br><h3>Results</h3><div class='well'>"+
-          result["output"]+"</div>");
+          " style='max-width: 400px;'><br><h3>Results</h3><div class='well'>"+ "<pre>" + 
+          result["output"]+"</pre></div>");
+	$('#search').removeAttr('disabled');
       },
       error: function(error) {
         console.log(error);

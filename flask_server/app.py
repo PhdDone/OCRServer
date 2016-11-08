@@ -14,40 +14,15 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def main():
     return render_template('index.html')
 
-'''
-def ocr2():
-    try:
-        url = request.json['image_url']
-        if 'jpg' in url:
-            output = process_image(url)
-            return jsonify({"output": output})
-        else:
-            return jsonify({"error": "only .jpg files, please"})
-    except:
-        return jsonify(
-            {"error": "Did you mean to send: {'image_url': 'some_jpeg_url'}"}
-        )
-'''
-
-@app.route('/your_method_name', methods=['POST'])
-def addRegion():
-    print("I got it!")
-    print(request.form['projectFilepath'])
-    return jsonify({"error": "only .jpg files, please"})
-
 @app.route('/ocr/<filename>')
 def send_image(filename):
-    print("%%%%%%%%%%%%%")
     print filename
     path = os.path.join(APP_ROOT, 'images/') #use full path
     return send_from_directory(path, filename)
 
-#@app.route('/ocr', methods=['POST'])
 @app.route('/v{}/ocr'.format(_VERSION), methods=["POST"])
 def ocr():
-    print("###############")
     target = os.path.join(APP_ROOT, 'images/')
-    print("###############")
     print(target)
     if not os.path.isdir(target):
         os.mkdir(target)
@@ -101,6 +76,5 @@ if not app.debug:
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    print("$$")
     app.debug = False
     app.run(host='0.0.0.0', port=port)

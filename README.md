@@ -12,10 +12,12 @@ sudo pip install virtualenv
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
-python app.py
+python flask_server/app.py
 ```
 
 ####References:
 https://realpython.com/blog/python/setting-up-a-simple-ocr-server/
+
 https://realpython.com/blog/python/setting-up-a-simple-ocr-server/
+
 https://github.com/ibininja/upload_file_python

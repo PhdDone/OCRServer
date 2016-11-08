@@ -2,49 +2,20 @@
 
 {% block content %}
 
-<!--<form role="form" method="POST" action="ocr" id="post-form" onsubmit="return false" enctype="multipart/form-data">
-  <div class="form-group">
-    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-    <input type="file" class="form-control input-lg" name="image_url" placeholder="enter an image url..." required></center>
-  </div>
-  <button type="submit" class="btn btn-lg btn-block btn-success boom" id="search">Submit!</button>
-</form>
--->
-
 <form role="form" id="post-form" method="POST" onsubmit="return false" enctype="multipart/form-data">
   <div class="form-group">
-    <input id="file-picker" type="file" name="file" class="form-control input-lg" accept="image/*" multiple>
-    <button type="submit" class="btn btn-lg btn-block btn-success boom" id="search">Submit!</button>
+    <input id="file-picker" type="file" name="file" class="form-control input-lg" accept="image/*">
+    <button type="submit" class="btn btn-lg btn-block btn-success boom" id="search">Run OCR</button>
   </div>
 </form>
 
-<script>
-  $("#file-picker").change(function(){  
-  var input = document.getElementById('file-picker');
-  formdata = new FormData();
-  for (var i=0; i<input.files.length; i++) {
-    var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
-
-    if ((ext == 'jpg') || (ext == 'png')) {
-                $("#msg").text("Files are supported")
-            }
-            else
-            {
-                $("#msg").text("Files are NOT supported")
-                document.getElementById("file-picker").value ="";
-            }
-
-        }
-    } );
-</script>
-
 <div id="results">
-  <h1>Results</h1>
+  <h1>Result</h1>
   <div id="results-data"></div>
 </div>
 
 <br><br>
 
-<div id="retry"><a href="">Again?</a></div>
+<div id="retry"><a href="">Again</a></div>
 
 {% endblock %}
